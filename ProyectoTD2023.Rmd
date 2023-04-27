@@ -1,5 +1,6 @@
 ---
 title: "PreyectoTD2023"
+autor: "Andres Chicaiza, Maria Castellanos, Hugo Lucas, Adrian Blat, Yuliana Villada"
 output: html_document
 date: "2023-04-18"
 ---
@@ -7,6 +8,8 @@ date: "2023-04-18"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
 ```{r}
 f_1 <- file("../data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroAnalogico.dat", "rb")
 
