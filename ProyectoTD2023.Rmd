@@ -125,3 +125,62 @@ ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x 
 ```
 
 
+
+```{r}
+#Cabecera digital
+
+cab_dig1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroDigital.dat"
+
+cab_info_dig <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroDigital.dat")
+
+max_cabdig1 <- cab_info_dig$size
+
+cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
+
+
+#Fichero digital
+
+fich_dig1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroDigital.dat"
+
+fich_info <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroDigital.dat")
+
+max_fichdig1 <- fich_info$size
+
+fichero_dig1 <- readBin(fich_dig1,integer(),n = max_fichdig1,size = 1, signed = F)
+
+HR1 <- fichero_dig1[seq(from=1, to = length(fichero_dig1), by = 9)]
+HR2 <- fichero_dig1[seq(from=2, to = length(fichero_dig1), by = 9)]
+MHR <- fichero_dig1[seq(from=3, to = length(fichero_dig1), by = 9)]
+TOCO <- fichero_dig1[seq(from=4, to = length(fichero_dig1), by = 9)]
+MSpO2 <- fichero_dig1[seq(from=5, to = length(fichero_dig1), by = 9)]
+VCP <- fichero_dig1[seq(from=6, to = length(fichero_dig1), by = 9)]
+Psistolica <- fichero_dig1[seq(from=7, to = length(fichero_dig1), by = 9)]
+Pdiastolica <- fichero_dig1[seq(from=8, to = length(fichero_dig1), by = 9)]
+Pmedia <- fichero_dig1[seq(from=9, to = length(fichero_dig1), by = 9)]
+
+mediaVCP <- mean(VCP)
+
+lista <- list(HR1, HR2, MHR, TOCO, MSpO2, VCP, Psistolica, Pdiastolica, Pmedia)
+
+nombres <- c("HR1", "HR2", "MHR", "TOCO", "MSpO2", "VCP", "Psistolica", "Pdiastolica", "Pmedia")
+
+dato_dig1 <- as.data.frame(lista)
+
+colnames(dato_dig1) <- nombres
+
+tiempo <- seq(0, length.out = nrow(dato_dig1), by = 0.25)
+tiempo <- head(tiempo, 19452)
+
+
+dato_dig1 <- dato_dig1 %>%
+    mutate(tiempo = tiempo)
+
+hora <- ((((length(dato_dig1) / 9) / 4) / 60) / 60)
+min <- ((hora - floor(hora)) * 60)
+seg <- ((min - floor(min))) * 60
+  
+tiempo_digital <- cbind(hora, min, seg)
+
+dato_dig1
+```
+
