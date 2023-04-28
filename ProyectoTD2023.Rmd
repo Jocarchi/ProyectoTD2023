@@ -1,6 +1,6 @@
 ---
 title: "PreyectoTD2023"
-autor: "Andres Chicaiza, Maria Castellanos, Hugo Lucas, Adrian Blat, Yuliana Villada"
+autor: "Andres Chicaiza, Maria Castellanos, Hugo Lucas, Yuliana Villada"
 output: html_document
 date: "2023-04-18"
 ---
@@ -15,9 +15,9 @@ library(dplyr)
 
 #Cabecera digital
 
-cab_dig1 <- "../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroDigital.dat"
+cab_dig1 <- "data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroDigital.dat"
 
-cab_info_dig <- file.info("../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroDigital.dat")
+cab_info_dig <- file.info("data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroDigital.dat")
 
 max_cabdig1 <- cab_info_dig$size
 
@@ -26,9 +26,9 @@ cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F
 
 #Fichero digital
 
-fich_dig1 <- "../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroDigital.dat"
+fich_dig1 <- "data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroDigital.dat"
 
-fich_info <- file.info("../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroDigital.dat")
+fich_info <- file.info("data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroDigital.dat")
 
 max_fichdig1 <- fich_info$size
 
@@ -85,9 +85,9 @@ ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
 ```{r}
 #Cabecera Analogica
 
-cab_ana1 <- "../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroAnalogico.dat"
+cab_ana1 <- "data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroAnalogico.dat"
 
-cab_info_ana <- file.info("../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroAnalogico.dat")
+cab_info_ana <- file.info("data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroAnalogico.dat")
 
 max_cabana1 <- cab_info_ana$size
 
@@ -96,8 +96,8 @@ cabecera_ana1.2 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 2, signed =
 
 # Fichero Analogico
 
-fich_ana1 <- "../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroAnalogico.dat"
-fich_info_ana <- file.info("../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroAnalogico.dat")
+fich_ana1 <- "data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroAnalogico.dat"
+fich_info_ana <- file.info("data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroAnalogico.dat")
 max_fichanal <- fich_info_ana$size
 
 fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
