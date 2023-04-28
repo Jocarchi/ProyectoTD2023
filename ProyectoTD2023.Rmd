@@ -215,6 +215,24 @@ fich_ana1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat"
 fich_info_ana <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat")
 max_fichanal <- fich_info_ana$size
 
+fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
 
+Frec <- 1000
+
+tiempo_ana1 <- seq(from = 0, to = (length(fichero_ana1)-1)/Frec, by = 1/Frec)
+
+dato_ana1 <- data.frame(tiempo_ana1, fichero_ana1)
+
+h <- ((length(dato_ana1)/Frec)/60)/60
+min <- ((h - floor(h)) * 60)
+seg <- ((min - floor(min)) * 60)
+
+time_ana1 <- cbind(h,min,seg)
+```
+
+
+```{r}
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
 
