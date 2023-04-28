@@ -184,3 +184,16 @@ tiempo_digital <- cbind(hora, min, seg)
 dato_dig1
 ```
 
+
+```{r}
+ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
+ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
+ggplot(dato_dig1, aes(tiempo,MHR)) + geom_line(size=0.2)
+ggplot(dato_dig1, aes(tiempo,TOCO)) + geom_line(size=0.2)
+ggplot(dato_dig1, aes(tiempo,MSpO2)) + geom_line(size=0.2)
+ggplot(dato_dig1, aes(tiempo,VCP)) + geom_line(size=0.2)
+ggplot(dato_dig1, aes(tiempo,Psistolica)) + geom_line(size=0.2)
+ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
+ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
+```
+
