@@ -209,5 +209,12 @@ max_cabana1 <- cab_info_ana$size
 cabecera_ana1.1 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 1, signed = F)
 cabecera_ana1.2 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 2, signed = T)
 
+# Fichero Analogico
+
+fich_ana1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat"
+fich_info_ana <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat")
+max_fichanal <- fich_info_ana$size
+
+
 ```
 
