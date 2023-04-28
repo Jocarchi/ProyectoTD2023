@@ -119,4 +119,9 @@ time_ana1 <- cbind(h,min,seg)
 ```
 
 
+```{r}
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
+```
+
 
