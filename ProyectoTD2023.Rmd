@@ -17,9 +17,9 @@ library(dplyr)
 
 cab_dig1 <- "../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroDigital.dat"
 
-cab_info <- file.info("../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroDigital.dat")
+cab_info_dig <- file.info("../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/cabecera_FicheroDigital.dat")
 
-max_cabdig1 <- cab_info$size
+max_cabdig1 <- cab_info_dig$size
 
 cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
 
@@ -91,10 +91,35 @@ cab_info_ana <- file.info("../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_
 
 max_cabana1 <- cab_info_ana$size
 
-cabecera_ana1 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 1, signed = F)
+cabecera_ana1.1 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 1, signed = F)
+cabecera_ana1.2 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 2, signed = T)
+
+# Fichero Analogico
+
+fich_ana1 <- "../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroAnalogico.dat"
+fich_info_ana <- file.info("../data/data/1059xlxveei79_ECGf2/27_09_2022/14.42.29_III_ECGyEXTyRESTO/ficheroAnalogico.dat")
+max_fichanal <- fich_info_ana$size
+
+fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
+
+Frec <- 1000
+
+tiempo_ana1 <- seq(from = 0, to = (length(fichero_ana1)-1)/Frec, by = 1/Frec)
+
+dato_ana1 <- data.frame(tiempo_ana1, fichero_ana1)
+
+h <- ((length(dato_ana1)/Frec)/60)/60
+min <- ((h - floor(h)) * 60)
+seg <- ((min - floor(min)) * 60)
+
+time_ana1 <- cbind(h,min,seg)
 
 
 
+```
+
+```{r}
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ```
 
 
