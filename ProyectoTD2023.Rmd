@@ -1,6 +1,6 @@
 ---
 title: "PreyectoTD2023"
-autor: "Andres Chicaiza, Maria Castellanos, Hugo Lucas, Yuliana Villada"
+autor: "Andres Chicaiza, Maria Castellanos, Hugo Lucas, Adrian Blat, Yuliana Villada"
 output: html_document
 date: "2023-04-18"
 ---
