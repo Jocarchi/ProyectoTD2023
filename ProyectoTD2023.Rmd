@@ -245,6 +245,11 @@ cab_info_dig <- file.info("../data/data/0795xalvii8a7/27_09_2022/10.11.00/cabece
 max_cabdig1 <- cab_info_dig$size
 cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
 
+#Fichero digital
+fich_dig1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.00/ficheroDigital.dat"
+fich_info <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.00/ficheroDigital.dat")
+max_fichdig1 <- fich_info$size
+fichero_dig1 <- readBin(fich_dig1,integer(),n = max_fichdig1,size = 1, signed = F)
 ```
 
 
