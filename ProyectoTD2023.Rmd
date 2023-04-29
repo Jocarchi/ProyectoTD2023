@@ -321,10 +321,18 @@ min <- ((h - floor(h)) * 60)
 seg <- ((min - floor(min)) * 60)
 
 time_ana1 <- cbind(h,min,seg)
+
 ```
 
 
 
+```{r}
+#Cabecera digital
+cab_dig1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.12/cabecera_FicheroDigital.dat"
+cab_info_dig <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.12/cabecera_FicheroDigital.dat")
+max_cabdig1 <- cab_info_dig$size
+cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
+```
 
 
 
