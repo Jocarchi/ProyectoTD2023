@@ -371,6 +371,11 @@ time_ana1 <- cbind(h,min,seg)
 ```
 
 
+```{r}
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
+```
+
 
 ```{r}
 #Cabecera digital
@@ -455,6 +460,12 @@ min <- ((h - floor(h)) * 60)
 seg <- ((min - floor(min)) * 60)
 
 time_ana1 <- cbind(h,min,seg)
+```
+
+
+```{r}
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
 
 
@@ -545,6 +556,11 @@ time_ana1 <- cbind(h,min,seg)
 ```
 
 
+```{r}
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
+```
+
 
 ```{r}
 # Para la carpeta ecg5_210xlxi81_IP_39_eBR_BRP_720 (Segunda subcarpeta, 12.49.57)
@@ -630,5 +646,11 @@ min <- ((h - floor(h)) * 60)
 seg <- ((min - floor(min)) * 60)
 
 time_ana1 <- cbind(h,min,seg)
+```
+
+
+```{r}
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
+ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
 
