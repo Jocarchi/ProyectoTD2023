@@ -604,3 +604,31 @@ ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
 ```
 
+
+```{r}
+# Cabecera Analógica
+cab_ana1 <- "data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.49.57/cabecera_FicheroAnalogico.dat"
+cab_info_ana <- file.info("data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.49.57/cabecera_FicheroAnalogico.dat")
+max_cabana1 <- cab_info_ana$size
+cabecera_ana1.1 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 1, signed = F)
+cabecera_ana1.2 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 2, signed = T)
+
+
+# Fichero Analógico
+fich_ana1 <- "data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.49.57/ficheroAnalogico.dat"
+fich_info_ana <- file.info("data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.49.57/ficheroAnalogico.dat")
+max_fichanal <- fich_info_ana$size
+fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
+
+Frec <- 1000
+tiempo_ana1 <- seq(from = 0, to = (length(fichero_ana1)-1)/Frec, by = 1/Frec)
+
+dato_ana1 <- data.frame(tiempo_ana1, fichero_ana1)
+
+h <- ((length(dato_ana1)/Frec)/60)/60
+min <- ((h - floor(h)) * 60)
+seg <- ((min - floor(min)) * 60)
+
+time_ana1 <- cbind(h,min,seg)
+```
+
