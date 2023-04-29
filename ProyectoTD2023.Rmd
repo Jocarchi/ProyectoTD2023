@@ -184,6 +184,8 @@ colnames(dato_dig1) <- nombres
 
 #Se Crea un vector llamado "tiempo" que va desde 0 hasta el número de filas del data frame "dato_dig1" con un intervalo de 0.25.
 tiempo <- seq(0, length.out = nrow(dato_dig1), by = 0.25)
+
+#Toma las primeras 19452 filas del vector "tiempo" y las asigna a la variable "tiempo".
 tiempo <- head(tiempo, 19452)
 
 
