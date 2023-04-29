@@ -127,27 +127,38 @@ ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x 
 
 
 ```{r}
+#Para la carpeta 0519
+
 #Cabecera digital
 
+# Se define la ubicación del archivo que contiene la cabecera digital.
 cab_dig1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroDigital.dat"
 
+# Se obtiene información sobre la cabecera digital, como su tamaño y fecha de creación.
 cab_info_dig <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroDigital.dat")
 
+# Se extrae el tamaño del archivo de la cabecera digital.
 max_cabdig1 <- cab_info_dig$size
 
+# Se lee el contenido del archivo de cabecera digital y se guarda en un vector llamado "cabecera_dig1" utilizando la función "readBin()".
 cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
 
 
 #Fichero digital
 
+# Se define la ubicación del archivo.
 fich_dig1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroDigital.dat"
 
+# Se obtiene información sobre el archivo, como su tamaño y fecha de creación.
 fich_info <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroDigital.dat")
 
+# Se extrae el tamaño del archivo de registro digital.
 max_fichdig1 <- fich_info$size
 
+# Se lee el contenido del archivo y se guarda en un vector llamado "fichero_dig1" utilizando la función "readBin()".
 fichero_dig1 <- readBin(fich_dig1,integer(),n = max_fichdig1,size = 1, signed = F)
 
+# Se divide el vector "fichero_dig1" en vectores separados para cada parámetro de interés.
 HR1 <- fichero_dig1[seq(from=1, to = length(fichero_dig1), by = 9)]
 HR2 <- fichero_dig1[seq(from=2, to = length(fichero_dig1), by = 9)]
 MHR <- fichero_dig1[seq(from=3, to = length(fichero_dig1), by = 9)]
@@ -158,16 +169,20 @@ Psistolica <- fichero_dig1[seq(from=7, to = length(fichero_dig1), by = 9)]
 Pdiastolica <- fichero_dig1[seq(from=8, to = length(fichero_dig1), by = 9)]
 Pmedia <- fichero_dig1[seq(from=9, to = length(fichero_dig1), by = 9)]
 
+# Se calcula la media de la variable "
 mediaVCP <- mean(VCP)
 
+#Se crea una lista que contiene las variables 
 lista <- list(HR1, HR2, MHR, TOCO, MSpO2, VCP, Psistolica, Pdiastolica, Pmedia)
 
 nombres <- c("HR1", "HR2", "MHR", "TOCO", "MSpO2", "VCP", "Psistolica", "Pdiastolica", "Pmedia")
 
+#Se crea un data frame a partir de la lista
 dato_dig1 <- as.data.frame(lista)
 
 colnames(dato_dig1) <- nombres
 
+#Se Crea un vector llamado "tiempo" que va desde 0 hasta el número de filas del data frame "dato_dig1" con un intervalo de 0.25.
 tiempo <- seq(0, length.out = nrow(dato_dig1), by = 0.25)
 tiempo <- head(tiempo, 19452)
 
@@ -235,6 +250,19 @@ time_ana1 <- cbind(h,min,seg)
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```{r}
 #Para la carpeta 0795xalvii8a7
@@ -399,6 +427,16 @@ fich_ana1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.12/ficheroAnalogico.dat"
 fich_info_ana <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.12/ficheroAnalogico.dat")
 max_fichanal <- fich_info_ana$size
 fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
+Frec <- 1000
+tiempo_ana1 <- seq(from = 0, to = (length(fichero_ana1)-1)/Frec, by = 1/Frec)
+
+dato_ana1 <- data.frame(tiempo_ana1, fichero_ana1)
+
+h <- ((length(dato_ana1)/Frec)/60)/60
+min <- ((h - floor(h)) * 60)
+seg <- ((min - floor(min)) * 60)
+
+time_ana1 <- cbind(h,min,seg)
 ```
 
 
