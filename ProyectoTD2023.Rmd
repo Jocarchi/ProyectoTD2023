@@ -203,6 +203,7 @@ dato_dig1
 
 
 ```{r}
+#Realizamos las gráficas 
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,MHR)) + geom_line(size=0.2)
@@ -217,27 +218,39 @@ ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
 ```{r}
 #Cabecera Analogica
 
+# Se define la ubicación del archivo que contiene la cabecera analógica.
 cab_ana1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroAnalogico.dat"
 
+#Se obtiene información sobre el archivo y se almacena en la variable cab_info_ana.
 cab_info_ana <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroAnalogico.dat")
 
+#Se obtiene el tamaño del archivo 
 max_cabana1 <- cab_info_ana$size
 
+#Se lee el archivo utilizando la función readBin() 
 cabecera_ana1.1 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 1, signed = F)
 cabecera_ana1.2 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 2, signed = T)
 
 # Fichero Analogico
 
+# Se define la ubicación del archivo que contiene el fichero analógico analógica.
 fich_ana1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat"
+
+#Se obtiene la información del archivo 
 fich_info_ana <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat")
+
+#Se obtiene el tamaño del archivo 
 max_fichanal <- fich_info_ana$size
 
+#Se lee el archivo con la funcion readBin
 fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
 
 Frec <- 1000
 
+#Se genera un vector de tiempo con la secuencia de 0 a la longitud del archivo dividido por la frecuencia de muestreo y luego se divide en incrementos de 1/Frec.
 tiempo_ana1 <- seq(from = 0, to = (length(fichero_ana1)-1)/Frec, by = 1/Frec)
 
+#Se crea el data frame 
 dato_ana1 <- data.frame(tiempo_ana1, fichero_ana1)
 
 h <- ((length(dato_ana1)/Frec)/60)/60
@@ -249,6 +262,7 @@ time_ana1 <- cbind(h,min,seg)
 
 
 ```{r}
+#Mostramos los gráficos
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
