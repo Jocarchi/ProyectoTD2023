@@ -9,6 +9,16 @@ date: "2023-04-18"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Preguntas:
+
+-   ¿Nos encontraremos con datos faltantes o nulos en la recogida de los datos?
+
+Como podemos observar, en las gráficas mostradas para cada uno de los ficheros, nos encontramos con diversos datos faltantes, ya sea porque en algún momento de la recogida de datos se han perdido, porque se han cometido errores en la entrada de datos y por muchos factores más. Por ellos es importante considerar estos datos faltantes, a la hora de la interpretación de la información extraida.
+
+-   ¿Hay algún patrón visible en la representación de los datos?
+
+Una de las preguntas que surgen antes de la implementación del codigo para la lectura de los ficheros, es si la información de cada uno de estos estará relacionada, o si por el contrario no tendrá nada que ver.
+
 ```{r}
 library(ggplot2)
 library(dplyr)
@@ -118,13 +128,10 @@ time_ana1 <- cbind(h,min,seg)
 
 ```
 
-
 ```{r}
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
-
-
 
 ```{r}
 #Para la carpeta 0519
@@ -201,7 +208,6 @@ tiempo_digital <- cbind(hora, min, seg)
 dato_dig1
 ```
 
-
 ```{r}
 #Realizamos las gráficas 
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
@@ -260,27 +266,11 @@ seg <- ((min - floor(min)) * 60)
 time_ana1 <- cbind(h,min,seg)
 ```
 
-
 ```{r}
 #Mostramos los gráficos
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ```{r}
 #Para la carpeta 0795xalvii8a7
@@ -327,8 +317,6 @@ tiempo_digital <- cbind(hora, min, seg)
 dato_dig1
 ```
 
-
-
 ```{r}
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
@@ -341,7 +329,6 @@ ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
 
 ```
-
 
 ```{r}
 #Cabecera Analogica
@@ -370,12 +357,10 @@ seg <- ((min - floor(min)) * 60)
 time_ana1 <- cbind(h,min,seg)
 ```
 
-
 ```{r}
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
-
 
 ```{r}
 #Cabecera digital
@@ -420,7 +405,6 @@ tiempo_digital <- cbind(hora, min, seg)
 dato_dig1
 ```
 
-
 ```{r}
 
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
@@ -434,8 +418,6 @@ ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
 
 ```
-
-
 
 ```{r}
 #Cabecera Analogica
@@ -462,12 +444,10 @@ seg <- ((min - floor(min)) * 60)
 time_ana1 <- cbind(h,min,seg)
 ```
 
-
 ```{r}
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
-
 
 ```{r}
 # Para la carpeta ecg5_210xlxi81_IP_39_eBR_BRP_720 (Primera subcarpeta, 12.31.15)
@@ -514,7 +494,6 @@ tiempo_digital <- cbind(hora, min, seg)
 dato_dig1
 ```
 
-
 ```{r}
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
@@ -526,7 +505,6 @@ ggplot(dato_dig1, aes(tiempo,Psistolica)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
 ```
-
 
 ```{r}
 # Cabecera Analógica
@@ -555,12 +533,10 @@ seg <- ((min - floor(min)) * 60)
 time_ana1 <- cbind(h,min,seg)
 ```
 
-
 ```{r}
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
-
 
 ```{r}
 # Para la carpeta ecg5_210xlxi81_IP_39_eBR_BRP_720 (Segunda subcarpeta, 12.49.57)
@@ -607,7 +583,6 @@ tiempo_digital <- cbind(hora, min, seg)
 dato_dig1
 ```
 
-
 ```{r}
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
@@ -619,7 +594,6 @@ ggplot(dato_dig1, aes(tiempo,Psistolica)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
 ```
-
 
 ```{r}
 # Cabecera Analógica
@@ -648,9 +622,7 @@ seg <- ((min - floor(min)) * 60)
 time_ana1 <- cbind(h,min,seg)
 ```
 
-
 ```{r}
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
-
