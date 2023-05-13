@@ -141,13 +141,15 @@ ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x 
 # Se define la ubicación del archivo que contiene la cabecera digital.
 cab_dig1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroDigital.dat"
 
-# Se obtiene información sobre la cabecera digital, como su tamaño y fecha de creación.
+# Se obtiene información sobre la cabecera digital, como su tamaño y fecha 
+#de creación.
 cab_info_dig <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/cabecera_FicheroDigital.dat")
 
 # Se extrae el tamaño del archivo de la cabecera digital.
 max_cabdig1 <- cab_info_dig$size
 
-# Se lee el contenido del archivo de cabecera digital y se guarda en un vector llamado "cabecera_dig1" utilizando la función "readBin()".
+# Se lee el contenido del archivo de cabecera digital y se guarda 
+#en un vector llamado "cabecera_dig1" utilizando la función "readBin()".
 cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
 
 
@@ -165,7 +167,8 @@ max_fichdig1 <- fich_info$size
 # Se lee el contenido del archivo y se guarda en un vector llamado "fichero_dig1" utilizando la función "readBin()".
 fichero_dig1 <- readBin(fich_dig1,integer(),n = max_fichdig1,size = 1, signed = F)
 
-# Se divide el vector "fichero_dig1" en vectores separados para cada parámetro de interés.
+# Se divide el vector "fichero_dig1" en vectores separados para cada 
+#parámetro de interés.
 HR1 <- fichero_dig1[seq(from=1, to = length(fichero_dig1), by = 9)]
 HR2 <- fichero_dig1[seq(from=2, to = length(fichero_dig1), by = 9)]
 MHR <- fichero_dig1[seq(from=3, to = length(fichero_dig1), by = 9)]
@@ -189,7 +192,8 @@ dato_dig1 <- as.data.frame(lista)
 
 colnames(dato_dig1) <- nombres
 
-#Se Crea un vector llamado "tiempo" que va desde 0 hasta el número de filas del data frame "dato_dig1" con un intervalo de 0.25.
+#Se Crea un vector llamado "tiempo" que va desde 0 hasta el número de 
+#filas del data frame "dato_dig1" con un intervalo de 0.25.
 tiempo <- seq(0, length.out = nrow(dato_dig1), by = 0.25)
 
 #Toma las primeras 19452 filas del vector "tiempo" y las asigna a la variable "tiempo".
@@ -206,6 +210,10 @@ seg <- ((min - floor(min))) * 60
 tiempo_digital <- cbind(hora, min, seg)
 
 dato_dig1
+#Observamos en la tabla la información de diversas variables, las 
+#cuales corresponden a la frecuencia cardiaca, (HR1 y HR2),medida por 
+#latidos por minuto, la saturación en sangre de oxígenos(MspO2),medida en #porcentaje, la presión diástola y sistolica (Psist,Pdia),  la VCP se mide 
+#en centímetros por segundo (cm/s) y el tiempo, el cual se mide en sgundos
 ```
 
 ```{r}
