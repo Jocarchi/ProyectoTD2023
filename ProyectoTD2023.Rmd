@@ -13,11 +13,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 -   ¿Nos encontraremos con datos faltantes o nulos en la recogida de los datos?
 
-Como podemos observar, en las gráficas mostradas para cada uno de los ficheros, nos encontramos con diversos datos faltantes, ya sea porque en algún momento de la recogida de datos se han perdido, porque se han cometido errores en la entrada de datos y por muchos factores más. Por ellos es importante considerar estos datos faltantes, a la hora de la interpretación de la información extraida.
+Como podemos observar, en las gráficas mostradas para cada uno de los ficheros, nos encontramos con diversos datos faltantes, ya sea porque en algún momento de la recogida de datos se han perdido, porque se han cometido errores en la entrada de datos o por muchos factores más. Por ellos es importante considerar estos datos faltantes, a la hora de la interpretación de la información extraida.
 
 -   ¿Hay algún patrón visible en la representación de los datos?
 
-Una de las preguntas que surgen antes de la implementación del codigo para la lectura de los ficheros, es si la información de cada uno de estos estará relacionada, o si por el contrario no tendrá nada que ver.
+Una de las preguntas que surgen antes de la implementación del codigo para la lectura de los ficheros, es si la información de cada uno de estos estará relacionada, o si por el contrario no tendrán nada que ver. Una vez ya mostradas las gráficas y las tablas, es posible comprobar que sí hay ciertos aspectos en los que se verifica una relación en la información de los ficheros. Como podemos observar, la variable tiempo se va incrementando de forma lineal y las variables pdiastola y psistólica, tienen un valor igual a cero.
 
 ```{r}
 library(ggplot2)
@@ -240,7 +240,7 @@ cabecera_ana1.2 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 2, signed =
 # Fichero Analogico
 
 # Se define la ubicación del archivo que contiene el fichero analógico analógica.
-fich_ana1 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat"
+fich_ana2 <- "data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat"
 
 #Se obtiene la información del archivo 
 fich_info_ana <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAnalogico.dat")
@@ -249,27 +249,27 @@ fich_info_ana <- file.info("data/data/0519xxxiii14/06_02_2023/14.20.34/FicheroAn
 max_fichanal <- fich_info_ana$size
 
 #Se lee el archivo con la funcion readBin
-fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
+fichero_ana2 <- readBin(fich_ana2, integer(), n = max_fichanal, size = 2, signed = T)
 
 Frec <- 1000
 
 #Se genera un vector de tiempo con la secuencia de 0 a la longitud del archivo dividido por la frecuencia de muestreo y luego se divide en incrementos de 1/Frec.
-tiempo_ana1 <- seq(from = 0, to = (length(fichero_ana1)-1)/Frec, by = 1/Frec)
+tiempo_ana2 <- seq(from = 0, to = (length(fichero_ana2)-1)/Frec, by = 1/Frec)
 
 #Se crea el data frame 
-dato_ana1 <- data.frame(tiempo_ana1, fichero_ana1)
+dato_ana2 <- data.frame(tiempo_ana2, fichero_ana2)
 
 h <- ((length(dato_ana1)/Frec)/60)/60
 min <- ((h - floor(h)) * 60)
 seg <- ((min - floor(min)) * 60)
 
-time_ana1 <- cbind(h,min,seg)
+time_ana2 <- cbind(h,min,seg)
 ```
 
 ```{r}
 #Mostramos los gráficos
-ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
-ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
+ggplot(dato_ana2, aes(tiempo_ana2,fichero_ana2)) + geom_line()
+ggplot(dato_ana2, aes(tiempo_ana2,fichero_ana2)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
 
 ```{r}
