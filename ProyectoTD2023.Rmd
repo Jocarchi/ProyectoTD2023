@@ -219,7 +219,16 @@ dato_dig1
 ```{r}
 #Realizamos las gráficas 
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
+#El siguiente gráfico muestra la evolución de la variable "HR1" en función 
+#del tiempo. Podemos ver que la variable fluctúa alrededor de un valor medio
+#, y que hay algunos picos y valles, que corresponden a los cambios de 
+#valor de la variable. La línea en sí misma muestra la tendencia general 
+#de la variable a lo largo del tiempo.
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
+#Este gráfico muestra la variación de la variable HR2 medida a lo largo 
+#del tiempo. Como podemos observar la gráfica muestra un único valor a 
+#medida que el tiempo avanza, el 0, por tanto elvalor de la variable HR2,
+#no evoluciona 
 ggplot(dato_dig1, aes(tiempo,MHR)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,TOCO)) + geom_line(size=0.2)
 ggplot(dato_dig1, aes(tiempo,MSpO2)) + geom_line(size=0.2)
