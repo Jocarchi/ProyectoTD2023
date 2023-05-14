@@ -210,32 +210,37 @@ seg <- ((min - floor(min))) * 60
 tiempo_digital <- cbind(hora, min, seg)
 
 dato_dig1
-#Observamos en la tabla la información de diversas variables, las 
-#cuales corresponden a la frecuencia cardiaca, (HR1 y HR2),medida por 
-#latidos por minuto, la saturación en sangre de oxígenos(MspO2),medida en #porcentaje, la presión diástola y sistolica (Psist,Pdia),  la VCP se mide 
-#en centímetros por segundo (cm/s) y el tiempo, el cual se mide en sgundos
+#Observamos en la tabla la información de diversas variables, las cuales corresponden a la frecuencia cardiaca, (HR1 y HR2),medida por latidos por minuto, la saturación en sangre de oxígenos(MspO2),medida en #porcentaje, la presión diástola y sistolica (Psist,Pdia),  la VCP se mide en centímetros por segundo (cm/s) y el tiempo, el cual se mide en sgundos
 ```
 
 ```{r}
 #Realizamos las gráficas 
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
-#El siguiente gráfico muestra la evolución de la variable "HR1" en función 
-#del tiempo. Podemos ver que la variable fluctúa alrededor de un valor medio
-#, y que hay algunos picos y valles, que corresponden a los cambios de 
-#valor de la variable. La línea en sí misma muestra la tendencia general 
-#de la variable a lo largo del tiempo.
+#El siguiente gráfico muestra la evolución de la variable "HR1" en función del tiempo. Podemos ver que la variable fluctúa alrededor de un valor medio, y que hay algunos picos y valles, que corresponden a los cambios de valor de la variable. La línea en sí misma muestra la tendencia general de la variable a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
-#Este gráfico muestra la variación de la variable HR2 medida a lo largo 
-#del tiempo. Como podemos observar la gráfica muestra un único valor a 
-#medida que el tiempo avanza, el 0, por tanto elvalor de la variable HR2,
-#no evoluciona 
+#Este gráfico muestra la variación de la variable HR2 medida a lo largo del tiempo. Como podemos observar la gráfica muestra un único valor a medida que el tiempo avanza, el 0, por tanto elvalor de la variable HR2,no evoluciona 
+
 ggplot(dato_dig1, aes(tiempo,MHR)) + geom_line(size=0.2)
+#Este gráfico muestra la variación de la frecuencia cardíaca media (MHR) a lo largo del tiempo  El gráfico muestra un patrón de variación en la MHR a lo largo del tiempo, lo que puede ser de interés para el análisis de la función cardíaca y el seguimiento de la salud cardiovascular.
+
 ggplot(dato_dig1, aes(tiempo,TOCO)) + geom_line(size=0.2)
+#Este gráfico muestra la variación en el valor de la señal TOCO a lo largo del tiempo. En el gráfico, se puede ver que la señal TOCO tiene valores iguales a 0 durante gran parte del tiempo. Sin embargo, hay algunos muchos picos en la señal,lo que indica una gran variacion de los datos
+
 ggplot(dato_dig1, aes(tiempo,MSpO2)) + geom_line(size=0.2)
+#Este gráfico muestra la variación en el tiempo de los valores de MSpO2. La línea en el gráfico indica cómo cambia el valor de MSpO2 en función del tiempo. En este caso, se puede observar que empiza con valor 0 durante un breve periodo de tiempo, y rapidamente asciende a un valor muy cercano a 100 y se estabiliza. 
+
 ggplot(dato_dig1, aes(tiempo,VCP)) + geom_line(size=0.2)
+#El gráfico muestra la variación del valor de VCP en función del tiempo. Se puede observar que el valor de VCP, como vemos, el gráfico presenta diversas fluctuaciones en en varios momentos a lo largo del tiempo. 
+
 ggplot(dato_dig1, aes(tiempo,Psistolica)) + geom_line(size=0.2)
+#El gráfico muestra la presión sistólica en función del tiempo. Se puede observar que el valor de la presión sistólica varía a lo largo del tiempo, comienza con valor 0, para luego llegar a valores que oscilan un valor igual 120, acabando por mantenerse practicamente constante hasta el final de la gráfica.
+
 ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
+#El gráfico muestra la variación de la presión diastólica a lo largo del tiempo. La línea muestra que la presión diastólica empieza con un valor igual a 0 y luego se mantiene en un rango bastante constante de alrededor de 80 durante la mayor parte del tiempo, con algunas fluctuaciones menores alrededor de ese rango
+
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
+#El gráfico muestra la variación de la presión media durante un periodo de tiempo. Como es posible observar, al igual que en los últimos gráficos, empieza cn valores igual a 0, hasta que incrementan repentinamente, hata estabilizarse n 80 con alguna pequeña bajada y subida.
 ```
 
 ```{r}
