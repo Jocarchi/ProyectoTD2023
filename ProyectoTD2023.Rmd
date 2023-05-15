@@ -298,10 +298,21 @@ ggplot(dato_ana2, aes(tiempo_ana2,fichero_ana2)) + geom_line(size = 1) + lims(x 
 #Para la carpeta 0795xalvii8a7
 
 #Cabecera digital
+
+#Se define la ubicación del archivo.
 cab_dig1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.00/cabecera_FicheroDigital.dat"
+
+#Obtenemos información sobre la cabecera digital, así como su tamaño y la fecha de creación
+
+#de creación
 cab_info_dig <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.00/cabecera_FicheroDigital.dat")
+
+#tamaño del archivo
 max_cabdig1 <- cab_info_dig$size
+
+#guardamos la cabecera en un vector con readBin()
 cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
+
 
 #Fichero digital
 fich_dig1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.00/ficheroDigital.dat"
