@@ -134,15 +134,34 @@ dato_dig1
 ```
 
 ```{r}
+# Realizamos las gráficas
+
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
+#El siguiente gráfico muestra la evolución de la variable "HR1" en función del tiempo. Podemos ver que la variable fluctúa alrededor de un valor medio, y que hay algunos picos y valles, que corresponden a los cambios de valor de la variable. La línea en sí misma muestra la tendencia general de la variable a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
+#Este gráfico muestra la variación de la variable HR2 medida a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,MHR)) + geom_line(size=0.2)
+#Este gráfico muestra la variación de la frecuencia cardíaca media (MHR) a lo largo del tiempo  El gráfico muestra un patrón de variación en la MHR a lo largo del tiempo, lo que puede ser de interés para el análisis de la función cardíaca y el seguimiento de la salud cardiovascular.
+
 ggplot(dato_dig1, aes(tiempo,TOCO)) + geom_line(size=0.2)
+#Este gráfico muestra la variación en el valor de la señal TOCO a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,MSpO2)) + geom_line(size=0.2)
+#Este gráfico muestra la variación en el tiempo de los valores de MSpO2. La línea en el gráfico indica cómo cambia el valor de MSpO2 en función del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,VCP)) + geom_line(size=0.2)
+#El gráfico muestra la variación del valor de VCP en función del tiempo. Se puede observar que el valor de VCP, como vemos, el gráfico presenta diversas fluctuaciones en en varios momentos a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,Psistolica)) + geom_line(size=0.2)
+#El gráfico muestra la presión sistólica en función del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
+#El gráfico muestra la variación de la presión diastólica a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
+#El gráfico muestra la variación de la presión media durante un periodo de tiempo.
 ```
 
 ```{r}
