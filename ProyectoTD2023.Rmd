@@ -261,7 +261,7 @@ ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
 #no evoluciona 
 
 ggplot(dato_dig1, aes(tiempo,MHR)) + geom_line(size=0.2)
-#Este gráfico muestra la variación de la frecuencia cardíaca media (MHR) 
+#Este gráfico muestra la variación de la frecuencia cardíaca materna (MHR) 
 #a lo largo del tiempo  El gráfico muestra un patrón de variación en la 
 #MHR a lo largo del tiempo, lo que puede ser de interés para el análisis 
 #de la función cardíaca y el seguimiento de la salud cardiovascular.
