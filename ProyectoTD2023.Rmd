@@ -1,8 +1,10 @@
 ---
 title: "ProyectoTD2023"
-autor: "Andrés Chicaiza, María Castellanos, Hugo Lucas, Adrián Blat, Yuliana Villada"
-output: html_document
+autor: Andrés Chicaiza, María Castellanos, Hugo Lucas, Adrián Blat, Yuliana Villada
 date: "2023-04-18"
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -210,37 +212,70 @@ seg <- ((min - floor(min))) * 60
 tiempo_digital <- cbind(hora, min, seg)
 
 dato_dig1
-#Observamos en la tabla la información de diversas variables, las cuales corresponden a la frecuencia cardiaca, (HR1 y HR2),medida por latidos por minuto, la saturación en sangre de oxígenos(MspO2),medida en #porcentaje, la presión diástola y sistolica (Psist,Pdia),  la VCP se mide en centímetros por segundo (cm/s) y el tiempo, el cual se mide en sgundos
+#Observamos en la tabla la información de diversas variables, las 
+#cuales corresponden a la frecuencia cardiaca, (HR1 y HR2),medida 
+#por latidos por #minuto, la saturación en sangre de oxígenos(MspO2),
+#medida en #porcentaje, la #presión diástola y sistolica (Psist,Pdia),
+#la VCP se mide en centímetros por #segundo (cm/s) y el tiempo, el 
+#cual se mide en sgundos
 ```
 
 ```{r}
 #Realizamos las gráficas 
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
-#El siguiente gráfico muestra la evolución de la variable "HR1" en función del tiempo. Podemos ver que la variable fluctúa alrededor de un valor medio, y que hay algunos picos y valles, que corresponden a los cambios de valor de la variable. La línea en sí misma muestra la tendencia general de la variable a lo largo del tiempo.
+#El siguiente gráfico muestra la evolución de la variable "HR1" en 
+#función del tiempo. Podemos ver que la variable fluctúa alrededor 
+#de un valor medio, y que hay algunos picos y valles, que corresponden 
+#a los cambios de valor de la variable. La línea en sí misma muestra 
+#la tendencia general de la variable a lo largo del tiempo.
 
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
-#Este gráfico muestra la variación de la variable HR2 medida a lo largo del tiempo. Como podemos observar la gráfica muestra un único valor a medida que el tiempo avanza, el 0, por tanto elvalor de la variable HR2,no evoluciona 
+#Este gráfico muestra la variación de la variable HR2 medida a lo largo 
+#del tiempo. Como podemos observar la gráfica muestra un único valor a 
+#medida que el tiempo avanza, el 0, por tanto elvalor de la variable HR2,
+#no evoluciona 
 
 ggplot(dato_dig1, aes(tiempo,MHR)) + geom_line(size=0.2)
-#Este gráfico muestra la variación de la frecuencia cardíaca media (MHR) a lo largo del tiempo  El gráfico muestra un patrón de variación en la MHR a lo largo del tiempo, lo que puede ser de interés para el análisis de la función cardíaca y el seguimiento de la salud cardiovascular.
+#Este gráfico muestra la variación de la frecuencia cardíaca media (MHR) 
+#a lo largo del tiempo  El gráfico muestra un patrón de variación en la 
+#MHR a lo largo del tiempo, lo que puede ser de interés para el análisis 
+#de la función cardíaca y el seguimiento de la salud cardiovascular.
 
 ggplot(dato_dig1, aes(tiempo,TOCO)) + geom_line(size=0.2)
-#Este gráfico muestra la variación en el valor de la señal TOCO a lo largo del tiempo. En el gráfico, se puede ver que la señal TOCO tiene valores iguales a 0 durante gran parte del tiempo. Sin embargo, hay algunos muchos picos en la señal,lo que indica una gran variacion de los datos
+#Este gráfico muestra la variación en el valor de la señal TOCO a lo 
+#largo del tiempo. En el gráfico, se puede ver que la señal TOCO tiene 
+#valores iguales a 0 durante gran parte del tiempo. Sin embargo, hay 
+#algunos muchos picos en la señal,lo que indica una gran variacion de los datos
 
 ggplot(dato_dig1, aes(tiempo,MSpO2)) + geom_line(size=0.2)
-#Este gráfico muestra la variación en el tiempo de los valores de MSpO2. La línea en el gráfico indica cómo cambia el valor de MSpO2 en función del tiempo. En este caso, se puede observar que empiza con valor 0 durante un breve periodo de tiempo, y rapidamente asciende a un valor muy cercano a 100 y se estabiliza. 
+#Este gráfico muestra la variación en el tiempo de los valores de MSpO2. 
+#La línea en el gráfico indica cómo cambia el valor de MSpO2 en función 
+#del tiempo. En este caso, se puede observar que empiza con valor 0 durante 
+#un breve periodo de tiempo, y rapidamente asciende a un valor muy cercano 
+#a 100 y se estabiliza. 
 
 ggplot(dato_dig1, aes(tiempo,VCP)) + geom_line(size=0.2)
-#El gráfico muestra la variación del valor de VCP en función del tiempo. Se puede observar que el valor de VCP, como vemos, el gráfico presenta diversas fluctuaciones en en varios momentos a lo largo del tiempo. 
+#El gráfico muestra la variación del valor de VCP en función del tiempo. 
+#Se puede observar que el valor de VCP, como vemos, el gráfico presenta 
+#diversas fluctuaciones en en varios momentos a lo largo del tiempo. 
 
 ggplot(dato_dig1, aes(tiempo,Psistolica)) + geom_line(size=0.2)
-#El gráfico muestra la presión sistólica en función del tiempo. Se puede observar que el valor de la presión sistólica varía a lo largo del tiempo, comienza con valor 0, para luego llegar a valores que oscilan un valor igual 120, acabando por mantenerse practicamente constante hasta el final de la gráfica.
+#El gráfico muestra la presión sistólica en función del tiempo. Se puede #observar que el valor de la presión sistólica varía a lo largo del tiempo, #comienza con valor 0, para luego llegar a valores que oscilan un valor 
+#igual 120, acabando por mantenerse practicamente constante hasta el final 
+#de la gráfica.
 
 ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
-#El gráfico muestra la variación de la presión diastólica a lo largo del tiempo. La línea muestra que la presión diastólica empieza con un valor igual a 0 y luego se mantiene en un rango bastante constante de alrededor de 80 durante la mayor parte del tiempo, con algunas fluctuaciones menores alrededor de ese rango
+#El gráfico muestra la variación de la presión diastólica a lo largo 
+#del tiempo. La línea muestra que la presión diastólica empieza con 
+#un valor igual a 0 y luego se mantiene en un rango bastante constante 
+#de alrededor de 80 durante la mayor parte del tiempo, con algunas 
+#fluctuaciones menores alrededor de ese rango
 
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
-#El gráfico muestra la variación de la presión media durante un periodo de tiempo. Como es posible observar, al igual que en los últimos gráficos, empieza cn valores igual a 0, hasta que incrementan repentinamente, hata estabilizarse n 80 con alguna pequeña bajada y subida.
+#El gráfico muestra la variación de la presión media durante un periodo 
+#de tiempo. Como es posible observar, al igual que en los últimos 
+#gráficos, empieza cn valores igual a 0, hasta que incrementan 
+#repentinamente, hata estabilizarse n 80 con alguna pequeña bajada y subida.
 ```
 
 ```{r}
@@ -275,7 +310,8 @@ fichero_ana2 <- readBin(fich_ana2, integer(), n = max_fichanal, size = 2, signed
 
 Frec <- 1000
 
-#Se genera un vector de tiempo con la secuencia de 0 a la longitud del archivo dividido por la frecuencia de muestreo y luego se divide en incrementos de 1/Frec.
+#Se genera un vector de tiempo con la secuencia de 0 a la longitud del 
+#archivo dividido por la frecuencia de muestreo y luego se divide en incrementos de 1/Frec.
 tiempo_ana2 <- seq(from = 0, to = (length(fichero_ana2)-1)/Frec, by = 1/Frec)
 
 #Se crea el data frame 
@@ -298,17 +334,29 @@ ggplot(dato_ana2, aes(tiempo_ana2,fichero_ana2)) + geom_line(size = 1) + lims(x 
 #Para la carpeta 0795xalvii8a7
 
 #Cabecera digital
+# Se define la ubicación del archivo que contiene la cabecera digital.
 cab_dig1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.00/cabecera_FicheroDigital.dat"
 cab_info_dig <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.00/cabecera_FicheroDigital.dat")
 max_cabdig1 <- cab_info_dig$size
+# Se lee el contenido del archivo de cabecera digital y se guarda 
+#en un vector llamado "cabecera_dig1" utilizando la función "readBin()".
 cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
 
 #Fichero digital
+# Se define la ubicación del archivo.
 fich_dig1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.00/ficheroDigital.dat"
+
+# Se obtiene información sobre el archivo
 fich_info <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.00/ficheroDigital.dat")
+
+# Se extrae el tamaño del archivo de registro digital.
 max_fichdig1 <- fich_info$size
+
+# Se lee el contenido del archivo y se guarda en un vector llamado "fichero_dig1" utilizando la función "readBin()".
 fichero_dig1 <- readBin(fich_dig1,integer(),n = max_fichdig1,size = 1, signed = F)
 
+# Se divide el vector "fichero_dig1" en vectores separados para cada 
+#parámetro de interés.
 HR1 <- fichero_dig1[seq(from=1, to = length(fichero_dig1), by = 9)]
 HR2 <- fichero_dig1[seq(from=2, to = length(fichero_dig1), by = 9)]
 MHR <- fichero_dig1[seq(from=3, to = length(fichero_dig1), by = 9)]
@@ -319,9 +367,14 @@ Psistolica <- fichero_dig1[seq(from=7, to = length(fichero_dig1), by = 9)]
 Pdiastolica <- fichero_dig1[seq(from=8, to = length(fichero_dig1), by = 9)]
 Pmedia <- fichero_dig1[seq(from=9, to = length(fichero_dig1), by = 9)]
 
+# Se calcula la media de la variable 
 mediaVCP <- mean(VCP)
+
+#Se crea una lista que contiene las variables 
 lista <- list(HR1, HR2, MHR, TOCO, MSpO2, VCP, Psistolica, Pdiastolica, Pmedia)
 nombres <- c("HR1", "HR2", "MHR", "TOCO", "MSpO2", "VCP", "Psistolica", "Pdiastolica", "Pmedia")
+
+#Se crea un data frame a partir de la lista
 dato_dig1 <- as.data.frame(lista)
 colnames(dato_dig1) <- nombres
 tiempo <- seq(0, length.out = nrow(dato_dig1), by = 0.25)
@@ -354,16 +407,30 @@ ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
 
 ```{r}
 #Cabecera Analogica
+# Se define la ubicación del archivo que contiene la cabecera analógica.
 cab_ana1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.00/cabecera_FicheroAnalogico.dat"
+
+#Se obtiene información sobre el archivo y se almacena en la variable cab_info_ana.
 cab_info_ana <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.00/cabecera_FicheroAnalogico.dat")
+
+#Se obtiene el tamaño de la variable 
 max_cabana1 <- cab_info_ana$size
+
+#Se lee la informacion del primer archivo 
 cabecera_ana1.1 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 1, signed = F)
+
+#Se lee la informacion del segundo archivo 
 cabecera_ana1.2 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 2, signed = T)
 
 
 # Fichero Analogico
+#Se especifica la ruta 
 fich_ana1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.00/ficheroAnalogico.dat"
+
+#Se obtiene la información del archivo 
 fich_info_ana <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.00/ficheroAnalogico.dat")
+
+#Se obtiene el tamaño de la variable
 max_fichanal <- fich_info_ana$size
 fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
 
