@@ -41,7 +41,11 @@ Otros factores importantes a considerar son las variables que se midieron y cóm
 
 En resumen, para hacer una interpretación completa de los datos es necesario tener una comprensión profunda de la naturaleza de los datos y de los métodos utilizados para recopilarlos y analizarlos.
 
+- ¿Qué información se puede obtener a partir de los gráficos generados?
 
+Encontramos nueve tipos de gráficos distintos, en los cuales se muestran las evoluciones de las variables a lo largo del tiempo. El gráfico mostrado nos proporciona información sobre cómo cambian los valores de esa variable.
+
+En dichos gráficos encontramos las variables HR1, HR2, MHR, TOCO, MSpO2, VCP, Psistolica, Pdiastolica y Pmedia, todas ellas representadas a lo largo del avance de la variable tiempo.
 ```{r}
 library(ggplot2)
 library(dplyr)
