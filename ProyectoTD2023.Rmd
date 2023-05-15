@@ -33,6 +33,15 @@ Puntos destacados y anomalías, la gráfica puede revela puntos destacados, como
 
 Comparación entre diferentes variables, la gráfica permite comparar diferentes variables a la vez, es decir, simultaneamente. Analizamos la relación entre la frecuencia cardíaca y la presión arterial para evaluar la función cardiovascular, nos proporciona información valiosa sobre las interacciones entre diferentes sistemas fisiológicos y ayuda en la toma de decisiones clínicas.
 
+- ¿Qué información adicional sería importante tener para poder hacer una interpretación más completa de los datos?
+
+Para poder hacer una interpretación más completa de los datos, es importante tener información adicional como la fuente de la que se han obtenido los datos, la metodología utilizada para recopilar dichos datos, el tamaño de la muestra, su distribución, la presencia de valores atípicos(negativos, NA). Además, es importante conocer el contexto en el que se recopilaron los datos, es decir, si son válidos y fiables, y si existen factores externos que puedan afectar los resultados. 
+
+Otros factores importantes a considerar son las variables que se midieron y cómo se midieron, las técnicas estadísticas utilizadas para analizar los datos, y el significado de los resultados obtenidos.
+
+En resumen, para hacer una interpretación completa de los datos es necesario tener una comprensión profunda de la naturaleza de los datos y de los métodos utilizados para recopilarlos y analizarlos.
+
+
 ```{r}
 library(ggplot2)
 library(dplyr)
