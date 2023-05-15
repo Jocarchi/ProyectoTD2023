@@ -738,17 +738,30 @@ ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x 
 # Para la carpeta ecg5_210xlxi81_IP_39_eBR_BRP_720 (Primera subcarpeta, 12.31.15)
 
 # Cabecera digital
+
+# Se define la ubicación del archivo que contiene la cabecera digital.
 cab_dig1 <- "data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/cabecera_FicheroDigital.dat"
+# Se obtiene información sobre la cabecera digital, como su tamaño y fecha de creación.
 cab_info_dig <- file.info("data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/cabecera_FicheroDigital.dat")
+# Se extrae el tamaño del archivo de la cabecera digital.
 max_cabdig1 <- cab_info_dig$size
+# Se lee el contenido del archivo de cabecera digital y se guarda 
+# en un vector llamado "cabecera_dig1" utilizando la función "readBin()".
 cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
 
 # Fichero digital
-fich_dig1 <- "data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/ficheroDigital.dat"
-fich_info <- file.info("data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/ficheroDigital.dat")
-max_fichdig1 <- fich_info$size
-fichero_dig1 <- readBin(fich_dig1,integer(),n = max_fichdig1,size = 1, signed = F)
 
+# Se define la ubicación del archivo.
+fich_dig1 <- "data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/ficheroDigital.dat"
+# Se obtiene información sobre el archivo, como su tamaño y fecha de creación.
+fich_info <- file.info("data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/ficheroDigital.dat")
+# Se extrae el tamaño del archivo de registro digital.
+max_fichdig1 <- fich_info$size
+# Se lee el contenido del archivo y se guarda en un vector llamado "fichero_dig1" utilizando 
+# la función "readBin()".
+fichero_dig1 <- readBin(fich_dig1,integer(),n = max_fichdig1,size = 1, signed = F)
+# Se divide el vector "fichero_dig1" en vectores separados para cada 
+# parámetro de interés.
 HR1 <- fichero_dig1[seq(from=1, to = length(fichero_dig1), by = 9)]
 HR2 <- fichero_dig1[seq(from=2, to = length(fichero_dig1), by = 9)]
 MHR <- fichero_dig1[seq(from=3, to = length(fichero_dig1), by = 9)]
@@ -759,11 +772,18 @@ Psistolica <- fichero_dig1[seq(from=7, to = length(fichero_dig1), by = 9)]
 Pdiastolica <- fichero_dig1[seq(from=8, to = length(fichero_dig1), by = 9)]
 Pmedia <- fichero_dig1[seq(from=9, to = length(fichero_dig1), by = 9)]
 
+# Se calcula la media de la variable "
 mediaVCP <- mean(VCP)
+# Se crea una lista que contiene las variables 
 lista <- list(HR1, HR2, MHR, TOCO, MSpO2, VCP, Psistolica, Pdiastolica, Pmedia)
+# Se crea vector con el nombre de las variables
 nombres <- c("HR1", "HR2", "MHR", "TOCO", "MSpO2", "VCP", "Psistolica", "Pdiastolica", "Pmedia")
+# Se crea un data frame a partir de la lista
 dato_dig1 <- as.data.frame(lista)
+# Se asigna el vector nombres a las columnas que incluye dato_dig1
 colnames(dato_dig1) <- nombres
+# Se Crea un vector llamado "tiempo" que va desde 0 hasta el número de 
+# filas del data frame "dato_dig1" con un intervalo de 0.25.
 tiempo <- seq(0, length.out = nrow(dato_dig1), by = 0.25)
 tiempo <- head(tiempo, 3540)
 
@@ -777,38 +797,84 @@ seg <- ((min - floor(min))) * 60
   
 tiempo_digital <- cbind(hora, min, seg)
 dato_dig1
+# Observamos en la tabla la información de diversas variables, las cuales corresponden a la frecuencia 
+# cardiaca, (HR1 y HR2),medida por latidos por minuto, la saturación en sangre de oxígenos(MspO2),
+# medida en porcentaje, la presión diástola y sistolica (Psist,Pdia),  la VCP se mide en
+# centímetros por segundo (cm/s) y el tiempo, el cual se mide en segundos
 ```
 
 ```{r}
+# Realizamos las gráficas
+
 ggplot(dato_dig1, aes(tiempo,HR1)) + geom_line(size=0.2)
+# El siguiente gráfico muestra la evolución de la variable "HR1" en función del tiempo. Podemos ver que la 
+# variable fluctúa alrededor de un valor medio, y que hay algunos picos y valles, que corresponden a los
+# cambios de valor de la variable. La línea en sí misma muestra la tendencia general de la variable a lo 
+# largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,HR2)) + geom_line(size=0.2)
+# Este gráfico muestra la variación de la variable HR2 medida a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,MHR)) + geom_line(size=0.2)
+# Este gráfico muestra la variación de la frecuencia cardíaca media (MHR) a lo largo del tiempo.
+# El gráfico muestra un patrón de variación en la MHR a lo largo del tiempo, lo que puede ser de 
+# interés para el análisis de la función cardíaca y el seguimiento de la salud cardiovascular.
+
 ggplot(dato_dig1, aes(tiempo,TOCO)) + geom_line(size=0.2)
+# Este gráfico muestra la variación en el valor de la señal TOCO a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,MSpO2)) + geom_line(size=0.2)
+# Este gráfico muestra la variación en el tiempo de los valores de MSpO2. La línea en el gráfico 
+# indica cómo cambia el valor de MSpO2 en función del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,VCP)) + geom_line(size=0.2)
+# El gráfico muestra la variación del valor de VCP en función del tiempo. Se puede observar que el valor 
+# de VCP, como vemos, el gráfico presenta diversas fluctuaciones en en varios momentos a lo largo del 
+# tiempo.
+
 ggplot(dato_dig1, aes(tiempo,Psistolica)) + geom_line(size=0.2)
+# El gráfico muestra la presión sistólica en función del tiempo. Se puede observar que el valor de la 
+# presión sistólica varía a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,Pdiastolica)) + geom_line(size=0.2)
+# El gráfico muestra la variación de la presión diastólica a lo largo del tiempo.
+
 ggplot(dato_dig1, aes(tiempo,Pmedia)) + geom_line(size=0.2)
+# El gráfico muestra la variación de la presión media durante un periodo de tiempo.
 ```
 
 ```{r}
 # Cabecera Analógica
+
+# Se define la ubicación del archivo que contiene la cabecera analógica.
 cab_ana1 <- "data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/cabecera_FicheroAnalogico.dat"
+# Se obtiene información sobre el archivo y se almacena en la variable cab_info_ana.
 cab_info_ana <- file.info("data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/cabecera_FicheroAnalogico.dat")
+# Se obtiene el tamaño del archivo 
 max_cabana1 <- cab_info_ana$size
+
+# Se lee el archivo utilizando la función readBin() 
 cabecera_ana1.1 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 1, signed = F)
+
 cabecera_ana1.2 <- readBin(cab_dig1,integer(),n = max_cabana1,size = 2, signed = T)
 
 
 # Fichero Analógico
+
+# Se define la ubicación del archivo que contiene el fichero analógico analógica.
 fich_ana1 <- "data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/ficheroAnalogico.dat"
+# Se obtiene la información del archivo 
 fich_info_ana <- file.info("data/data/ecg5_210xlxi81_IP_39_eBR_BRP_720/12.31.15/ficheroAnalogico.dat")
+# Se obtiene el tamaño del archivo 
 max_fichanal <- fich_info_ana$size
+# Se lee el archivo con la funcion readBin
 fichero_ana1 <- readBin(fich_ana1, integer(), n = max_fichanal, size = 2, signed = T)
-
+# Se le asigna un valor (1000) a Frec
 Frec <- 1000
+# Se genera un vector de tiempo con la secuencia de 0 a la longitud del archivo dividido por la 
+# frecuencia de muestreo y luego se divide en incrementos de 1/Frec.
 tiempo_ana1 <- seq(from = 0, to = (length(fichero_ana1)-1)/Frec, by = 1/Frec)
-
+# Se crea el data frame 
 dato_ana1 <- data.frame(tiempo_ana1, fichero_ana1)
 
 h <- ((length(dato_ana1)/Frec)/60)/60
@@ -819,6 +885,7 @@ time_ana1 <- cbind(h,min,seg)
 ```
 
 ```{r}
+# Mostramos los gráficos
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line()
 ggplot(dato_ana1, aes(tiempo_ana1,fichero_ana1)) + geom_line(size = 1) + lims(x = c(692,700.03), y = c(-198,957))
 ```
