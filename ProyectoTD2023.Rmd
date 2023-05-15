@@ -21,6 +21,18 @@ Como podemos observar, en las gráficas mostradas para cada uno de los ficheros,
 
 Una de las preguntas que surgen antes de la implementación del codigo para la lectura de los ficheros, es si la información de cada uno de estos estará relacionada, o si por el contrario no tendrán nada que ver. Una vez ya mostradas las gráficas y las tablas, es posible comprobar que sí hay ciertos aspectos en los que se verifica una relación en la información de los ficheros. Como podemos observar, la variable tiempo se va incrementando de forma lineal y las variables pdiastola y psistólica, tienen un valor igual a cero.
 
+-   ¿Existen diferencias notables en la gráfica entre diferentes momentos? ¿Qué factores podrían explicar esas diferencias?
+
+Existen diferencias notables en las gráficas entre diferentes momentos debido a diferentes factores. Estos factores pueden incluir cambios en las variables medidas, como la frecuencia cardíaca, saturación de oxígeno o presión arterial, variabilidad natural de las variables y diferencias en el intervalo de tiempo, así como la frecuencia de muestreo. Estos elementos contribuyen a las variaciones en las gráficas y deben considerarse en el contexto clínico o experimental en el que se obtuvieron los datos.
+
+-   ¿Qué información importante se puede extraer de la gráfica para poder tomar decisiones?
+
+Primero de todo las tendencias y patrones, la gráfica revela tendencias o patrones a lo largo del tiempo como si hay un aumento constante en la frecuencia cardíaca o una disminución en la presión arterial, puede ser útiles para evaluar la progresión de una enfermedad o de un tratamiento.
+
+Puntos destacados y anomalías, la gráfica puede revela puntos destacados, como picos o valles inusuales en los datos, indican eventos o anomalías importantes que requieren atención. Así como un pico repentino en la frecuencia cardíaca tanto de subida o de bajada.
+
+Comparación entre diferentes variables, la gráfica permite comparar diferentes variables a la vez, es decir, simultaneamente. Analizamos la relación entre la frecuencia cardíaca y la presión arterial para evaluar la función cardiovascular, nos proporciona información valiosa sobre las interacciones entre diferentes sistemas fisiológicos y ayuda en la toma de decisiones clínicas.
+
 ```{r}
 library(ggplot2)
 library(dplyr)
@@ -334,12 +346,8 @@ ggplot(dato_ana2, aes(tiempo_ana2,fichero_ana2)) + geom_line(size = 1) + lims(x 
 #Para la carpeta 0795xalvii8a7
 
 #Cabecera digital
-<<<<<<< HEAD
 
-#Se define la ubicación del archivo.
-=======
 # Se define la ubicación del archivo que contiene la cabecera digital.
->>>>>>> 7237d4206ccba38f607759ee1429976adc8d108c
 cab_dig1 <- "data/data/0795xalvii8a7/27_09_2022/10.11.00/cabecera_FicheroDigital.dat"
 
 #Obtenemos información sobre la cabecera digital, así como su tamaño y la fecha de creación
@@ -349,13 +357,9 @@ cab_info_dig <- file.info("data/data/0795xalvii8a7/27_09_2022/10.11.00/cabecera_
 
 #tamaño del archivo
 max_cabdig1 <- cab_info_dig$size
-<<<<<<< HEAD
 
-#guardamos la cabecera en un vector con readBin()
-=======
 # Se lee el contenido del archivo de cabecera digital y se guarda 
 #en un vector llamado "cabecera_dig1" utilizando la función "readBin()".
->>>>>>> 7237d4206ccba38f607759ee1429976adc8d108c
 cabecera_dig1 <- readBin(cab_dig1,integer(),n = max_cabdig1,size = 1, signed = F)
 
 
